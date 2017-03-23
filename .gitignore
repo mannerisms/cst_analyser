@@ -25,3 +25,4 @@ tests/.coverage
 tests/coverage_html/
 /importer/migrations
 tests/report/
+.idea/
