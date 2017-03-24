@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+
+        <title>
+            {% block title %}
+                Call Data Analyser
+            {% endblock %}
+        </title>
+
+        {% load staticfiles %}
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Local stylesheets -->
+        <link rel="stylesheet" type="text/css" href="{% static 'DataTables/datatables.css' %}"/>
+        <script type="text/javascript" src={% static 'DataTables/datatables.js' %}></script>
+
+        <!-- Load other CSS -->
+        <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Satisfy'>
+        <link rel="stylesheet" type="text/css" href="{% static 'importer/style.css' %}"/>
+
+        <!-- page specific header modifications -->
+        {% block add_head %}
+        {% endblock %}
+
+    </head>
+    <body>
+
+    <nav class="navbar navbar-inverse">
+
+        <!-- Navbar -->
+
+        <div class="container-fluid">
+
+            <!-- Navbar Collapser -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Navbar Branding -->
+                <a class="navbar-brand" href="{% url 'importer:index' %}">CDA</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="topNavBar">
+                <!-- Left Navbar Items -->
+                <ul class="nav navbar-nav">
+
+                    <!-- Data Dropdown-->
+                    <li class="dropdown">
+                        <a href="{% url 'importer:index' %}" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;
+                            Sources
+                            <span class="caret"></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Phones</a></li>
+                                <li><a href="{% url 'importer:persons' %}">Persons</a></li>
+                            </ul>
+                        </a>
+                    </li>
+
+                {% block toggle %}
+
+                {% endblock %}
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Add new page code -->
+    {% block content %}{% endblock %}
+
+    </body>
+    <footer>
+
+        <!-- page specific header modifications -->
+        {% block add_foot %}
+        {% endblock %}
+
+    </footer>
+
+</html>

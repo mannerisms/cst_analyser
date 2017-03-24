@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 lead"><b>PROFILE</b>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 text-center">
+
+                        <img id="image_display"
+                             class="img-circle avatar avatar-original"
+                             {% if person.image %}
+                                src="{{ person.image.url }}"
+                             {% else %}
+                                {%  load staticfiles %}
+                                src="{% static "importer/images/profile.png" %}"
+                             {% endif %}>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="only-bottom-margin">{{ person }}</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="text-muted">Type: </span>{{ person.get_person_type_display }}<br>
+                                <span class="text-muted">Birth date: </span>{{ person.date_of_birth }}<br>
+                                <span class="text-muted">Gender: </span> {{ person.person_gender }}<br><br>
+                                <span class="text-muted">Detail: </span>{{ person.Comment }}<br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                        <div class="btn-toolbar pull-right" role="toolbar">
+                            <!-- Edit -->
+                            <div class="btn-group">
+                                <form action="{% url 'importer:person-update' person.id %}" method="get">
+                                    {% csrf_token %}
+                                    <button class="btn btn-warning pull-right"><i
+                                            class="glyphicon glyphicon-pencil"></i> Edit
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="btn-group">
+                                </form>
+                                <form action="{% url 'importer:person-delete' person.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button class="btn btn-danger pull-right"><i
+                                            class="glyphicon glyphicon-remove"></i> Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

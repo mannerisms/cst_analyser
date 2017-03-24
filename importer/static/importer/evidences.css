@@ -1,0 +1,32 @@
+.navbar {
+    border-radius: 0;
+}
+
+th {
+    background-color: black;
+    color: white;
+}
+
+#person_profile_container {
+    padding-top: 40px;
+}
+
+.container {
+    background-color: inherit;
+}
+
+#content-container {
+    padding-top: 15px;
+}
+
+#image_display {
+    -webkit-user-select: none;
+    margin: auto;
+    display: block;
+    wi: 120px;
+    height: 120px;
+}
+
+#check-column {
+    align-items: center;
+}

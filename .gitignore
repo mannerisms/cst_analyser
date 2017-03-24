@@ -14,12 +14,10 @@
 __pycache__
 build/
 cst_analyser/settings_secret.py
-db.sqlite3
 dist/
 docs/_build/
 docs/locale/
 MANIFEST
-myvenv
 node_modules/
 tests/.coverage
 tests/coverage_html/

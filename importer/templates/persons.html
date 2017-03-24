@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    CDA - Persons
+{% endblock %}
+
+{% block add_head %}
+
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "importer/persons.css" %}"/>
+
+{% endblock %}
+
+{#<!-- add add Person -->#}
+{#{% block toggle %}#}
+{#    <!-- Right Navbar Items -->#}
+{#    <ul class="nav navbar-nav navbar-right">#}
+{#        <li><a href="{% url 'importer:person-add' %}" id="menu-toggle">#}
+{#            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;#}
+{#            New Person#}
+{#        </a></li>#}
+{#    </ul>#}
+{#{% endblock %}#}
+
+
+{% block content %}
+
+    <div id="content-container" class="container-fluid">
+
+        <div id="person_table_container" class="container-fluid col-md-6">
+
+            {% if  all_persons %}
+
+                <table id="person-table" class="table table-striped table-bordered table-hover" cellspacing="0"
+                       width="100%">
+                    <thead>
+                    <tr>
+                        <th id="check-column"><input name="select_all" value="1" id="person-select-all" type="checkbox">
+                        </th>
+                        <th>First Name</th>
+                        <th>Middle Name</th>
+                        <th>Last Name</th>
+                        <th>Initials</th>
+                        <th>Type</th>
+                        <th>Date Of Birth</th>
+                    </tr>
+                    </thead>
+
+                    <tbody class="searchable">
+                    {% for person in all_persons %}
+                        <tr id="{{ person.id }}">
+                            <td id="check-column"></td>
+                            <td>{{ person.first_name }}</td>
+                            <td>{{ person.middle_name }}</td>
+                            <td>{{ person.last_name }}</td>
+                            <td>{{ person.initials }}</td>
+                            <td>{{ person.person_type_id.type }}</td>
+                            <td>{{ person.date_of_birth | date:"Y-m-d" }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            {% else %}
+
+                <h3>You don't have any persons</h3>
+
+            {% endif %}
+
+        </div>
+
+        <!-- Area for Person Profile Container -->
+        <div id="person_profile_container" class="container-fluid col-md-6"></div>
+
+    </div>
+
+{% endblock %}
